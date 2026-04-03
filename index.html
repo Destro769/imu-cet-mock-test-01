@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMU CET Mock Exam | 200 Marks</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+      window.MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+      };
+    </script>
+</head>
+<body>
+
+    <header class="top-bar">
+        <div class="exam-name">IMU CET Mock Test (200 Questions)</div>
+    </header>
+
+    <div id="exam-interface" class="main-container">
+        
+        <div class="left-section">
+            <div class="subject-bar">
+                <div class="subject-info">
+                    <strong>Sections:</strong>
+                    <button class="sub-btn active" onclick="jumpToSection('Aptitude')">Aptitude & GK (50)</button>
+                    <button class="sub-btn" onclick="jumpToSection('Chemistry')">Chemistry (25)</button>
+                    <button class="sub-btn" onclick="jumpToSection('English')">English (25)</button>
+                    <button class="sub-btn" onclick="jumpToSection('Mathematics')">Mathematics (50)</button>
+                    <button class="sub-btn" onclick="jumpToSection('Physics')">Physics (50)</button>
+                </div>
+            </div>
+
+            <div class="question-header">
+                <div class="q-info">
+                    <span class="q-label">Question No. <span id="q-display-no">1</span></span>
+                    <span class="q-marks">Right: +1 | Wrong: -0.25</span>
+                </div>
+                <div class="timer-display">
+                    Time Left: <span id="timer">03:00:00</span>
+                </div>
+            </div>
+
+            <div class="question-box" id="q-box-container">
+                <div id="question-text" class="q-text">Loading Question...</div>
+                <div id="options-container" class="options-list"></div>
+            </div>
+
+            <div class="footer-actions">
+                <div class="left-actions">
+                    <button class="btn btn-secondary" onclick="clearResponse()">Clear Response</button>
+                    <button class="btn btn-review" onclick="markForReview()">Mark for Review & Next</button>
+                </div>
+                <div class="right-actions">
+                    <button class="btn btn-secondary" id="back-btn" onclick="prevQuestion()"><< Back</button>
+                    <button class="btn btn-success" onclick="saveAndNext()">Save & Next >></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-section">
+            <div class="palette-legend">
+                <div class="legend-item"><span class="dot answer"></span> Answered</div>
+                <div class="legend-item"><span class="dot not-answer"></span> Not Answered</div>
+                <div class="legend-item"><span class="dot not-visit"></span> Not Visited</div>
+                <div class="legend-item"><span class="dot review"></span> Marked Review</div>
+            </div>
+
+            <div class="palette-header">Question Palette:</div>
+            <div class="palette-grid" id="palette-container"></div>
+
+            <button class="btn-submit" onclick="submitExam()">SUBMIT TEST</button>
+        </div>
+    </div>
+
+    <div id="result-interface" class="result-container" style="display: none;">
+        <h2>Exam Summary</h2>
+        <div class="result-stats" id="result-stats"></div>
+        
+        <h3>Detailed Review</h3>
+        <div id="detailed-review" class="review-list"></div>
+        
+        <button class="btn btn-success" style="margin-top: 20px;" onclick="location.reload()">Restart Exam</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
